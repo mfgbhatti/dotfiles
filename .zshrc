@@ -1,0 +1,70 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Created by newuser for 5.8
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null #for arch
+export TERM='xterm-256color'
+
+# History in cache director
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zshhistory
+setopt appendhistory
+
+# Basic auto/tab complete
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)               # Include hidden files.
+
+# Load ; should be last for Arch.
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Key Binding
+bindkey '^[[7~' beginning-of-line #home key
+bindkey '^[[H' beginning-of-line #home key
+bindkey '^[[8~' end-of-line #end key
+bindkey '^[[F' end-of-line #end key
+bindkey '^[[2~' overwrite-mode #insert key
+bindkey '^[[3~' delete-char    #delete key
+bindkey '^[[C' forward-char    #right key
+bindkey '^[[D' backward-char   #left key
+# ctrl+arrow
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;3B' history-search-forward
+bindkey '^[[1;3A' history-search-backward
+
+# Aliases
+alias vi=vim
+alias df='df -h'
+alias ls='ls -hF --color'
+alias grep='grep -i --color'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias jrnl='journalctl -p 3 -xb'
+alias colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$"\n"}; done'
+# Pacman
+alias info='pacman -Q --info'
+alias search='pacman -Ss'
+alias autoclean='pacman -Qdtq | sudo pacman -Rc -'
+# Dotfile
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# Git
+alias clone='git clone'
+alias commit='git commit -m'
+alias checkout='git checkout'
+alias push='git push'
+alias pull='git pull'
+alias stat='git status'
+#alias gitu='git add .;git commit -m "...";git push;'
