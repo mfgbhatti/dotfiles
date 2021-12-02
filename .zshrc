@@ -66,6 +66,7 @@ alias colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f "
 alias info='pacman -Q --info'
 alias search='pacman -Ss'
 alias autoclean='pacman -Qdtq | sudo pacman -Rc -'
+alias pac='sudo pacman'
 # Dotfile
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Git
