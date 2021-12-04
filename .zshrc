@@ -15,7 +15,9 @@ fi
 
 # Loading p10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
+# Exporting 
 export TERM='xterm-256color'
+export EDITOR='vim'
 
 # History in cache director
 HISTSIZE=10000
@@ -70,6 +72,7 @@ alias pac='sudo pacman'
 # Dotfile
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Git
+alias glog='git log --pretty=oneline'
 alias clone='git clone'
 alias commit='git commit -m'
 alias checkout='git checkout'
