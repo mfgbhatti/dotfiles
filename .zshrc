@@ -19,6 +19,34 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
 export TERM='xterm-256color'
 export EDITOR='vim'
 
+# Prompt Settings
+declare -a PROMPTS
+PROMPTS=(
+    "∮"
+    "ف"
+    "س"
+    "ǁ"
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+)
+RANDOM=$$$(date +%s)
+ignition=${PROMPTS[$RANDOM % ${#RANDOM[*]}+1]}
+#PROMPT='%F{yellow}%1~%f %F{green}'$ignition'%f '
+PROMPT='%F{yellow}%1~%f %F{green}>%f '
+
+## Git Settings
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%r%f'
+zstyle ':vcs_info:*' enable git
+
 # History in cache director
 HISTSIZE=10000
 SAVEHIST=10000
@@ -55,6 +83,7 @@ bindkey '^[[1;3B' history-search-forward
 bindkey '^[[1;3A' history-search-backward
 
 # Aliases
+alias w='nitrogen --set-zoom-fill --random ~/Pictures/wallpapers'
 alias vi=vim
 alias df='df -h'
 alias ls='ls -hF --color'
