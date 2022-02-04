@@ -17,7 +17,8 @@ fi
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
 
 ## Exporting
-export EDITOR='nvim'
+export EDITOR='/usr/bin/nvim'
+export VISUAL="$EDITOR"
 export BROWSER='brave'
 export TERMINAL="kitty"
 export TERM='xterm-256color'
@@ -56,7 +57,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 ## History in cache director
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zshhistory
+#HISTFILE=~/.cache/zsh/history
+export HISTFILE="$XDG_CACHE_HOME"/zsh/history
 setopt appendhistory
 
 ## Basic auto/tab complete
@@ -65,6 +67,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)               # Include hidden files.
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 ## Load zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
@@ -113,10 +116,10 @@ alias pac='sudo pacman'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 ## Git
-alias glog='git log --pretty=oneline'
+alias glog='git log --pretty=oneline --abbrev-commit'
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias commit='git commit -m'
 alias checkout='git checkout'
 alias push='git push'
 alias pull='git pull'
-alias stat='git status'
+alias status='git status'
