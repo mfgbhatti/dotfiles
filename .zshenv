@@ -1,2 +1,2 @@
 pfetch
-#export ZDOTDIR=$HOME/.config/zsh
+ZDOTDIR=$HOME/.config/zsh
