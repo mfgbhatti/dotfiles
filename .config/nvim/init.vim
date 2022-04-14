@@ -11,6 +11,7 @@ endif
 "call plug#begin(system('echo -n delete\"${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 call plug#begin(expand('~/.config/nvim/plugged'))
 
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'

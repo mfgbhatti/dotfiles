@@ -93,8 +93,8 @@ bindkey '^[[1;3B' history-search-forward
 bindkey '^[[1;3A' history-search-backward
 
 ## Aliases
-alias w='nitrogen --set-zoom-fill --random ~/Pictures/wallpapers'
-alias ws=".config/styli.sh/styli.sh -g"
+#alias w='nitrogen --set-zoom-fill --random ~/Pictures/wallpapers'
+#alias ws=".config/styli.sh/styli.sh -g"
 alias vi=nvim
 alias df='df -h'
 alias ls='ls -hF --color'
@@ -104,11 +104,12 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias jrnl='journalctl -p 3 -xb'
 alias colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$"\n"}; done'
-alias r='ranger'
+#alias r='ranger'
 
 ## Pacman
-alias info='pacman -Q --info'
 alias search='pacman -Ss'
+#alias info='pacman -Q --info'
+alias info='pacman -Qq '
 alias autoclean='pacman -Qdtq | sudo pacman -Rc -'
 alias pac='sudo pacman'
 
@@ -118,7 +119,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 ## Git
 alias glog='git log --pretty=oneline --abbrev-commit'
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-alias commit='git commit -m'
+alias commit='git commit -S -m'
 alias checkout='git checkout'
 alias push='git push'
 alias pull='git pull'
