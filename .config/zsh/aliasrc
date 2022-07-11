@@ -17,6 +17,10 @@ alias \
 	mv='mv -i' \
 	rm='rm -i' \
 	grep='grep -i --color' \
+	..='cd ..' \
+	free='free -m -l -t' \
+	mkdir='mkdir -pv' \
+	mount='mount | column -t' \
 	ls='ls -hN --color=auto --group-directories-first'
 
 ## App Specific
@@ -35,7 +39,13 @@ alias \
 	info='pacman -Qii' \
 	app_list='pacman -Ql' \
 	pac='sudo pacman' \
-	autoclean='pacman -Qdtq | sudo pacman -Rc -'
+	autoclean='pacman -Qdtq | sudo pacman -Rc -' \
+	mirror='sudo reflector --age 48 --country GB --fastest 5 --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirror'
+
+## Sytemctl
+alias \
+	sys='sudo systemctl ' \
+	enabled='sys list-unit-files --state=enabled'
 
 ## Dotfile
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
