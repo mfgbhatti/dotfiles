@@ -23,6 +23,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
 ## Load zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
 
 # History in cache director
 HISTSIZE=10000
@@ -78,5 +79,7 @@ bindkey '^[[D' backward-char   		#left key
 ## ctrl+arrow
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
-bindkey '^[[1;3B' history-search-forward
-bindkey '^[[1;3A' history-search-backward
+bindkey '^[[1;5A' history-substring-search-up # crtl + up-arrow
+bindkey '^[[1;5B' history-substring-search-down # crtl + down-arrow
+bindkey '^[[1;3B' history-search-forward # alt + up-arrow
+bindkey '^[[1;3A' history-search-backward # alt + down-arrow

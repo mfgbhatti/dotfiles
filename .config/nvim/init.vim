@@ -8,19 +8,20 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall
 endif
 
-"call plug#begin(system('echo -n delete\"${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+" call plug#begin(system('echo -n delete\"${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 call plug#begin(expand('~/.config/nvim/plugged'))
 
-Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+" Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
-Plug 'junegunn/goyo.vim'
-Plug 'jreybert/vimagit'
-Plug 'lukesmithxyz/vimling'
-Plug 'vimwiki/vimwiki'
+" Plug 'junegunn/goyo.vim'
+" Plug 'jreybert/vimagit'
+" Plug 'lukesmithxyz/vimling'
+" Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 set title
@@ -97,6 +98,10 @@ set noshowcmd
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
+
+" Airline
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme='powerlineish'
 
 " Ensure files are read as what I want:
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}

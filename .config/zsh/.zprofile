@@ -13,7 +13,6 @@ export EDITOR='/usr/bin/nvim'
 export VISUAL="$EDITOR"
 export BROWSER='brave'
 export TERMINAL="alacritty"
-
 export TERM='xterm-256color'
 
 # Clean
