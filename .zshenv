@@ -9,3 +9,4 @@
 
 pfetch
 ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}"/zsh
+#systemd-analyze | tr '+' '\n' | sed -E 's/(.*\(userspace\) )/\1\nTotal Time /;s/(.*in)/\1\n-/;s/([0-9.sm]* )\(([a-z]*)\)/\2 in \1/;s/^[[:space:]]/- /g;s/^gra.*$//'
