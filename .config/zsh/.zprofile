@@ -11,7 +11,7 @@
 # Default
 export EDITOR='/usr/bin/nvim'
 export VISUAL="$EDITOR"
-export BROWSER='brave'
+export BROWSER='google-chrome-stable'
 export TERMINAL="alacritty"
 export TERM='xterm-256color'
 
@@ -24,3 +24,4 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export LESSHISTFILE="-"
 export HISTFILE="$XDG_CACHE_HOME"/zsh/history
+export GOPATH="$XDG_DATA_HOME"/go
