@@ -136,9 +136,11 @@ schemes:
     # References:
     #   https://github.com/alacritty/alacritty
     primary:
-      background: '#2e3440'
+      #background: '#2e3440'
+      background: "0x141b1e"
       foreground: '#d8dee9'
-      dim_foreground: '#a5abb6'
+      dim_foreground: "0x141b1e"
+        #dim_foreground: '#a5abb6'
     cursor:
       text: '#2e3440'
       cursor: '#d8dee9'
@@ -194,6 +196,38 @@ schemes:
     #   text: '0xffffff'
     #   background: '0xdc3232'
     #   white:   '0xffffff'
+everblush: &everblush
+  # Default colors
+  primary:
+    background: "0x141b1e"
+    foreground: "0xdadada"
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: "0xd6-d6d6"
+    cursor: "0x3b4244"
+
+  # Normal colors
+  normal:
+    black: "0x232a2d"
+    red: "0xe57474"
+    green: "0x8ccf7e"
+    yellow: "0xe5c76b"
+    blue: "0x67b0e8"
+    magenta: "0xc47fd5"
+    cyan: "0x6cbfbf"
+    white: "0xb3b9b8"
+
+  # Bright colors
+  bright:
+    black: "0x2d3437"
+    red: "0xef7e7e"
+    green: "0x96d988"
+    yellow: "0xf4d67a"
+    blue: "0x71baf2"
+    magenta: "0xce89df"
+    cyan: "0x67cbe7"
+    white: "0xbdc3c2"
 
 colors: *nordic-polar
 
