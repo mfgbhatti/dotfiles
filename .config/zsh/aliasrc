@@ -36,15 +36,20 @@ alias \
 ## Pacman
 alias \
 	search='pacman -Ss' \
+	install='sudo pacman -S' \
+	upgrade='sudo pacman -Syu' \
+	update='sudo pacman -Sy' \
 	info='pacman -Qii' \
 	app_list='pacman -Ql' \
-	pac='sudo pacman' \
+	# pac='sudo pacman' \
 	autoclean='pacman -Qdtq | sudo pacman -Rc -' \
 	mirror='sudo reflector --age 48 --country GB --fastest 5 --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirror'
 
 ## Sytemctl
 alias \
-	sys='sudo systemctl ' \
+	sstatus="sudo systemctl status" \
+	srestart="sudo systemctl restart" \
+	# sys='sudo systemctl ' \
 	enabled='sys list-unit-files --state=enabled'
 
 ## Dotfile
