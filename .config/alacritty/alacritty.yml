@@ -25,10 +25,10 @@ window.dynamic_title: true
 # Font Customization
 font:
   normal:
-    family: JetBrainsMono Nerd Font
+    family: JetBrainsMono
     style: Regular
   bold:
-    family: JetBrainsMono Nerd Font
+    family: JetBrainsMono
     style: Bold
   italic:
     family: JetBrainsMono Nerd Font

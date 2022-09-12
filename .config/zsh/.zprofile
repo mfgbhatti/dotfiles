@@ -19,9 +19,11 @@ export TERM='xterm-256color'
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 # MISC
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export LESSHISTFILE="-"
-export HISTFILE="$XDG_CACHE_HOME"/zsh/history
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
 export GOPATH="$XDG_DATA_HOME"/go
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
