@@ -83,3 +83,6 @@ bindkey '^[[1;5A' history-substring-search-up # crtl + up-arrow
 bindkey '^[[1;5B' history-substring-search-down # crtl + down-arrow
 bindkey '^[[1;3B' history-search-forward # alt + up-arrow
 bindkey '^[[1;3A' history-search-backward # alt + down-arrow
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
