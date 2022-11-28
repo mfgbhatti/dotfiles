@@ -28,10 +28,20 @@ alias \
 	vi=nvim \
 	ws='.config/styli.sh/styli.sh -l reddit' \
 	jrnl='journalctl -p 3 -xb' \
+	lsnap='snapper -c root list' \
+	dsnap='snapper -c root delete ' \
 	colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$"\n"}; done'
 	# alias ls='ls -hF --color' \
 	# r='ranger' \
 	# alias w='nitrogen --set-zoom-fill --random ~/Pictures/wallpapers' \
+
+## NordVpn
+alias \
+	ndis='nordvpn disconnect' \
+	ncon='nordvpn connect GB' \
+	nkill='nordvpn set killswitch 1' \
+	nkilloff='nordvpn set killswitch 0' \
+	nstatus='nordvpn status'
 
 ## Pacman
 alias \
@@ -41,7 +51,6 @@ alias \
 	update='sudo pacman -Sy' \
 	info='pacman -Qii' \
 	app_list='pacman -Ql' \
-	# pac='sudo pacman' \
 	autoclean='pacman -Qdtq | sudo pacman -Rc -' \
 	mirror='sudo reflector --age 48 --country GB --fastest 5 --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirror'
 
@@ -49,8 +58,8 @@ alias \
 alias \
 	sstatus="sudo systemctl status" \
 	srestart="sudo systemctl restart" \
-	# sys='sudo systemctl ' \
 	enabled='sys list-unit-files --state=enabled'
+	# sys='sudo systemctl ' \
 
 ## Dotfile
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
