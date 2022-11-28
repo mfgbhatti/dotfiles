@@ -9,7 +9,7 @@
 
 # Window Customization
 window:
-  opacity: .7
+  opacity: 0.7
   dimensions:
     columns: 120
     lines: 35
@@ -40,19 +40,18 @@ font:
   glyph_offset:
     x: 0
     y: 0
-  use_thin_strokes: false
   debug:
     persistent_logging: false
 draw_bold_text_with_bright_colors: true
 
-
 schemes:
 
-  tokyo-night: &tokyo-night
+  tokyo-night:
     # Tokyo Night theme, based on both:
     #   https://github.com/ghifarit53/tokyonight-vim
     #   https://github.com/enkia/tokyo-night-vscode-theme
     # Default colors
+    &tokyo-night
     cursor:
       text: CellBackground
       cursor: CellForeground
@@ -62,25 +61,25 @@ schemes:
 
     # Normal colors
     normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
+      black: '0x32344a'
+      red: '0xf7768e'
+      green: '0x9ece6a'
+      yellow: '0xe0af68'
+      blue: '0x7aa2f7'
       magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x787c99'
+      cyan: '0x449dab'
+      white: '0x787c99'
 
     # Bright colors
     bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
+      black: '0x444b6a'
+      red: '0xff7a93'
+      green: '0xb9f27c'
+      yellow: '0xff9e64'
+      blue: '0x7da6ff'
       magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
+      cyan: '0x0db9d7'
+      white: '0xacb0d0'
     indexed_colors:
       - { index: 16, color: '0xdc9656' }
       - { index: 17, color: '0xa16946' }
@@ -92,9 +91,10 @@ schemes:
     selection:
       text: '0xffffff'
       background: '0xdc3232'
-      white:   '0xffffff'
+      white: '0xffffff'
 
-  tokyo-night-storm: &tokyo-night-storm
+  tokyo-night-storm:
+    &tokyo-night-storm
     cursor:
       text: CellBackground
       cursor: CellForeground
@@ -105,42 +105,42 @@ schemes:
 
     # Normal colors
     normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
+      black: '0x32344a'
+      red: '0xf7768e'
+      green: '0x9ece6a'
+      yellow: '0xe0af68'
+      blue: '0x7aa2f7'
       magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x9699a8'
+      cyan: '0x449dab'
+      white: '0x9699a8'
 
     # Bright colors
     bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
+      black: '0x444b6a'
+      red: '0xff7a93'
+      green: '0xb9f27c'
+      yellow: '0xff9e64'
+      blue: '0x7da6ff'
       magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
+      cyan: '0x0db9d7'
+      white: '0xacb0d0'
 
-  nordic-polar: &nordic-polar
+  nordic-polar:
     # Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
     # Copyright (c) 2017-present Sven Greb <code@svengreb.de>
-
     # Project:    Nord Alacritty
     # Version:    0.1.0
     # Repository: https://github.com/arcticicestudio/nord-alacritty
     # License:    MIT
     # References:
     #   https://github.com/alacritty/alacritty
+    &nordic-polar
     primary:
       #background: '#2e3440'
       background: "0x141b1e"
       foreground: '#d8dee9'
       dim_foreground: "0x141b1e"
-        #dim_foreground: '#a5abb6'
+      #dim_foreground: '#a5abb6'
     cursor:
       text: '#2e3440'
       cursor: '#d8dee9'
@@ -191,13 +191,13 @@ schemes:
     #   - { index: 19, color: '0x383838' }
     #   - { index: 20, color: '0xb8b8b8' }
     #   - { index: 21, color: '0xe8e8e8' }
-
     # selection:
     #   text: '0xffffff'
     #   background: '0xdc3232'
     #   white:   '0xffffff'
-everblush: &everblush
+everblush:
   # Default colors
+  &everblush
   primary:
     background: "0x141b1e"
     foreground: "0xdadada"
@@ -229,7 +229,33 @@ everblush: &everblush
     cyan: "0x67cbe7"
     white: "0xbdc3c2"
 
-colors: *nordic-polar
+colors:
+  name: Belge
+  author: ""
+  primary:
+    background: "#000000"
+    foreground: "#ffffff"
+  cursor:
+    text: "#000000"
+    cursor: "#ffffff"
+  normal:
+    black: "#252525"
+    red: "#ef6769"
+    green: "#a6e22e"
+    yellow: "#fd971f"
+    blue: "#6495ed"
+    magenta: "#deb887"
+    cyan: "#b0c4de"
+    white: "#dbdcdc"
+  bright:
+    black: "#454545"
+    red: "#fc7ca5"
+    green: "#b6e354"
+    yellow: "#fd971f"
+    blue: "#87ceeb"
+    magenta: "#996600"
+    cyan: "#87ceeb"
+    white: "#fdfdfd"
 
 cursor:
   style:
@@ -240,3 +266,4 @@ cursor:
 
 key_bindings:
   - { key: N, mods: Control, action: SpawnNewInstance }
+theme: Belge
