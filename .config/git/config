@@ -1,0 +1,8 @@
+[user]
+	name = Farhan Ghani
+	email = 13787498+mfgbhatti@users.noreply.github.com
+	signingkey = 4C8BCE72D51A8177913FC6848190D9D62604507D
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
