@@ -27,3 +27,4 @@ export LESSHISTFILE="-"
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 export GOPATH="$XDG_DATA_HOME"/go
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
