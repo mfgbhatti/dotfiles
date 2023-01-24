@@ -21,8 +21,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
 ## To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$XDG_CONFIG_HOME"/zsh/.p10k.zsh ]] || source "$XDG_CONFIG_HOME"/zsh/.p10k.zsh
 
-## Source angular auto complete
-source <(ng completion script)
 
 # History in cache director
 HISTSIZE=10000
@@ -30,7 +28,7 @@ SAVEHIST=10000
 setopt appendhistory
 
 ## Basic auto/tab complete
-autoload -U compinit
+autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
