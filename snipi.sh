@@ -39,7 +39,7 @@ paste_rs() {
 }
 #---------------------------------------------------------------------------------------------------------
 # SC2034
-PARSED_ARGUMENTS=$(getopt --alternative --name "$0" --options p:,v --longoptions genpass:,paste.rs:,0x0.st:,version -- "$@")
+PARSED_ARGUMENTS=$(getopt --alternative --name "$0" --options h,p:,v --longoptions genpass:,help,paste.rs:,0x0.st:,version -- "$@")
 VALID_ARGUMENTS=$?
 if [[ "$VALID_ARGUMENTS" != "0" ]]; then
     usage
