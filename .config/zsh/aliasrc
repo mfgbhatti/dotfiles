@@ -15,9 +15,10 @@ alias \
 	df='df -h' \
 	cp='cp -i' \
 	mv='mv -i' \
-	rm='rm -i' \
+	rm='rm -irf' \
 	grep='grep -i --color' \
 	..='cd ..' \
+	...='cd ../..' \
 	free='free -m -l -t' \
 	mkdir='mkdir -pv' \
 	mount='mount | column -t' \
@@ -72,7 +73,7 @@ alias \
 	checkout='git checkout' \
 	push='git push' \
 	pull='git pull' \
-	status='git status'
+	gstatus='git status'
 
 ## Misc
 alias wget='wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
