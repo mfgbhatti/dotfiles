@@ -1,0 +1,58 @@
+import = [
+# "~/.config/alacritty/breeze.toml"
+# "~/.config/alacritty/cyber_punk_neon.toml"
+# "~/.config/alacritty/dracula.toml"
+"~/.config/alacritty/tokyo-night-storm.toml"
+# "~/.config/alacritty/tokyo-night.toml"
+# "~/.config/alacritty/xterm.toml"
+]
+[font]
+size = 12
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Control"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+# decorations = "none"
+opacity = 0.75
+title = "Terminal"
+
+[window.dimensions]
+columns = 120
+lines = 35
+
+[window.padding]
+x = 25
+y = 25
+
+[cursor.style]
+# shape = "Block"
+shape = "Beam"
+blinking = "Always"
