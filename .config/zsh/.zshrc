@@ -18,9 +18,13 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 # To load P10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
 
+# Autojump
+source /usr/share/autojump/autojump.zsh
 ## To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$XDG_CONFIG_HOME"/zsh/.p10k.zsh ]] || source "$XDG_CONFIG_HOME"/zsh/.p10k.zsh
 
+# Set up Node Version Manager
+source /usr/share/nvm/init-nvm.sh
 
 # History in cache director
 HISTSIZE=10000

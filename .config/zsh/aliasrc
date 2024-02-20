@@ -11,69 +11,70 @@
 # Aliases
 ## Common
 alias \
-	sudo='sudo ' \
-	df='df -h' \
-	cp='cp -i' \
-	mv='mv -i' \
-	rm='rm -irf' \
-	grep='grep -i --color' \
-	..='cd ..' \
-	...='cd ../..' \
-	free='free -m -l -t' \
-	mkdir='mkdir -pv' \
-	mount='mount | column -t' \
-	ls='ls -hN --color=auto --group-directories-first'
+sudo='sudo ' \
+df='df -h' \
+cp='cp -i' \
+cat='bat ' \
+mv='mv -i' \
+rm='printf "Use trash instead. If needed, backslash rm will bypass it.\n"; false' \
+grep='grep -i --color' \
+..='cd ..' \
+...='cd ../..' \
+free='free -m -l -t' \
+mkdir='mkdir -pv' \
+mount='mount | column -t' \
+ls='ls -lahN --color=auto --group-directories-first'
 
 ## App Specific
 alias \
-	vi=nvim \
-	ws='.config/styli.sh/styli.sh -l reddit' \
-	jrnl='journalctl -p 3 -xb' \
-	lsnap='snapper -c root list' \
-	dsnap='snapper -c root delete ' \
-	colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$"\n"}; done'
-	# alias ls='ls -hF --color' \
-	# r='ranger' \
-	# alias w='nitrogen --set-zoom-fill --random ~/Pictures/wallpapers' \
+vi=nvim \
+ws='.config/styli.sh/styli.sh -l reddit' \
+jrnl='journalctl -p 3 -xb' \
+lsnap='snapper --config root list --type pre-post' \
+dsnap='snapper --config root delete '
+# colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$"\n"}; done'
+# alias ls='ls -hF --color' \
+# r='ranger' \
+# alias w='nitrogen --set-zoom-fill --random ~/Pictures/wallpapers' \
 
 ## NordVpn
 alias \
-	ndis='nordvpn disconnect' \
-	ncon='nordvpn connect GB' \
-	nkill='nordvpn set killswitch 1' \
-	nkilloff='nordvpn set killswitch 0' \
-	nstatus='nordvpn status'
+ndis='nordvpn disconnect' \
+ncon='nordvpn connect GB' \
+nkill='nordvpn set killswitch 1' \
+nkilloff='nordvpn set killswitch 0' \
+nstatus='nordvpn status'
 
 ## Pacman
 alias \
-	search='pacman -Ss' \
-	install='sudo pacman -S' \
-	upgrade='sudo pacman -Syu' \
-	update='sudo pacman -Sy' \
-	info='pacman -Qii' \
-	app_list='pacman -Ql' \
-	autoclean='pacman -Qdtq | sudo pacman -Rc -' \
-	mirror='sudo reflector --age 48 --country GB --fastest 5 --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirror'
+search='pacman -Ss' \
+install='sudo pacman -S' \
+upgrade='sudo pacman -Syu' \
+update='sudo pacman -Sy' \
+info='pacman -Qii' \
+app_list='pacman -Ql' \
+autoclean='pacman -Qdtq | sudo pacman -Rc -' \
+mirror='sudo reflector --age 48 --country GB --fastest 5 --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirror'
 
 ## Sytemctl
 alias \
-	sstatus="sudo systemctl status" \
-	srestart="sudo systemctl restart" \
-	enabled='sys list-unit-files --state=enabled'
-	# sys='sudo systemctl ' \
+sstatus="sudo systemctl status" \
+srestart="sudo systemctl restart" \
+enabled='sys list-unit-files --state=enabled'
+# sys='sudo systemctl ' \
 
 ## Dotfile
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 ## Git
 alias \
-	glog='git log --pretty=oneline --abbrev-commit' \
-	glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all" \
-	commit='git commit -S -m' \
-	checkout='git checkout' \
-	push='git push' \
-	pull='git pull' \
-	gstatus='git status'
+glog='git log --pretty=oneline --abbrev-commit' \
+glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all" \
+commit='git commit -S -m' \
+checkout='git checkout' \
+push='git push' \
+pull='git pull' \
+gstatus='git status'
 
 ## Misc
 alias wget='wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
