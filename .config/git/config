@@ -1,8 +1,15 @@
 [user]
 	name = Farhan Ghani
 	email = 13787498+mfgbhatti@users.noreply.github.com
-	signingkey = 4C8BCE72D51A8177913FC6848190D9D62604507D
+	signingkey = 9DD189D2BE310AB2
 [commit]
 	gpgsign = true
 [gpg]
 	program = gpg
+[core]
+	autocrlf = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
