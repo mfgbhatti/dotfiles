@@ -41,7 +41,7 @@ multiplier = 3
 
 [window]
 # decorations = "none"
-opacity = 0.75
+# opacity = 0.75
 title = "Terminal"
 
 [window.dimensions]
