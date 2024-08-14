@@ -26,6 +26,9 @@ source /usr/share/autojump/autojump.zsh
 # Set up Node Version Manager
 source /usr/share/nvm/init-nvm.sh
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # History in cache director
 HISTSIZE=10000
 SAVEHIST=10000

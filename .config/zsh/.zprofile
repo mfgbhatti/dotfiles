@@ -45,5 +45,7 @@ export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CACHE_HOME/ansible/galaxy_cache"
 
 # Python
 export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
+# export PYTHONHISTFILE="$XDG_STATE_HOME/python/history"
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 export PYTHONUSERBASE="$XDG_DATA_HOME/python"
+
