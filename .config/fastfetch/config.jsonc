@@ -48,15 +48,21 @@
             "key": "  ",
             "keyColor": "\u001b[38;5;49m"
         },
-        {
-            "type": "shell",
-            "key": "  ",
-            "keyColor": "\u001b[38;5;12m"
-        },
+        // {
+        //     "type": "shell",
+        //     "key": "  "
+        // },
         {
             "type": "uptime",
             "key": "  ",
             "keyColor": "\u001b[38;5;214m"
+        },
+        {
+            "type": "command",
+            "shell": "/usr/bin/bash",
+            "text": "systemd-analyze | sed -E 's/.*= ([\\.s0-9]*)/\\1/;s/gra.*$//'",
+            "key": "  󰅕",
+            "format": "System took {0}"
         },
         {
             "type": "custom", // SoftwareStart
@@ -65,13 +71,14 @@
         {
             "type": "title",
             "key": "  ",
-            "format": "{1}@{2}.pk",
+            "format": "{user-name-colored}{at-symbol-colored}{host-name-colored}",
             "keyColor": "\u001b[38;5;226m"
         },
         {
             "type": "host",
             "key": "  ",
-            "keyColor": "\u001b[38;5;27m"
+            "keyColor": "\u001b[38;5;27m",
+            "format": "{name}{?vendor} ({vendor}){?}"
         },
         {
             "type": "cpu",
@@ -81,7 +88,8 @@
         {
             "type": "gpu",
             "key": "  󰍛",
-            "keyColor": "\u001b[38;5;190m"
+            "keyColor": "\u001b[38;5;190m",
+            "format": "{type} {name}{?vendor} ({vendor}){?}"
         },
         {
             "type": "disk",
