@@ -1,0 +1,26 @@
+# With AUTO_CD enabled in zsh, the shell will automatically change directory
+setopt AUTO_CD
+# add a bit more data (timestamp in unix epoch time and elapsed time of the command
+setopt EXTENDED_HISTORY
+# share history across multiple zsh sessions
+setopt SHARE_HISTORY
+# append to history
+setopt APPEND_HISTORY
+# adds commands as they are typed, not at shell exit
+setopt INC_APPEND_HISTORY
+# Delete the older duplicate command from history when a new one is typed
+setopt HIST_IGNORE_ALL_DUPS
+# Do not write duplicate entries to the history file
+setopt HIST_SAVE_NO_DUPS
+# Skip duplicate entries when searching backwards (with Up Arrow or Ctrl+R)
+setopt HIST_FIND_NO_DUPS
+# Remove extra blanks/spaces from commands before saving them
+setopt HIST_REDUCE_BLANKS
+# expire duplicates first
+setopt HIST_EXPIRE_DUPS_FIRST
+# Corrects command names
+setopt correct
+# Corrects command names AND their arguments
+setopt correct_all
+# Basic auto/tab complete
+

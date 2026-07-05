@@ -1,80 +1,248 @@
-#!/usr/bin/env bash
-#              ____      __    __          __  __  _
-#   ____ ___  / __/___ _/ /_  / /_  ____ _/ /_/ /_(_)
-#  / __ `__ \/ /_/ __ `/ __ \/ __ \/ __ `/ __/ __/ /
-# / / / / / / __/ /_/ / /_/ / / / / /_/ / /_/ /_/ /
-#/_/ /_/ /_/_/  \__, /_.___/_/ /_/\__,_/\__/\__/_/
-#              /____/
-#
-#	https://github.com/mfgbhatti/dotfile
-
-# Aliases
-## Common
-alias \
-sudo='sudo ' \
-df='df -h' \
-cp='cp -i' \
-cat='bat ' \
-mv='mv -i' \
-rm='printf "Use trash instead. If needed, backslash rm will bypass it.\n"; false' \
-grep='grep -i --color' \
-..='cd ..' \
-...='cd ../..' \
-free='free -m -l -t' \
-mkdir='mkdir -pv' \
-mount='mount | column -t' \
-ls='ls -lahN --color=auto --group-directories-first'
-
-## App Specific
-alias \
-vi=nvim \
-ws='.config/styli.sh/styli.sh -l reddit' \
-jrnl='journalctl -p 3 -xb' \
-lsnap='snapper --config root list --type pre-post' \
-dsnap='snapper --config root delete '
-# colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$"\n"}; done'
-# alias ls='ls -hF --color' \
-# r='ranger' \
-# alias w='nitrogen --set-zoom-fill --random ~/Pictures/wallpapers' \
-
-## NordVpn
-alias \
-ndis='nordvpn disconnect' \
-ncon='nordvpn connect GB' \
-nkill='nordvpn set killswitch 1' \
-nkilloff='nordvpn set killswitch 0' \
-nstatus='nordvpn status'
+###################################################################
+# this shell configuration is inspired
+# from
+# https://github.com/mayTermux/myTermux/blob/main/.aliases
+# and
+# https://github.com/ChrisTitusTech/mybash/blob/main/.bashrc
+####################################################################
+alias q="exit"
+alias c="clear"
+alias g="git"
+alias f="find . | grep "
+alias '..'='cd ..'
+alias '...'='cd ../..'
+alias '....'='cd ../../..'
+alias '.....'='cd ../../../..'
+alias ls='ls -lahN --color=auto --group-directories-first'
+alias preview="fzf --preview='bat --color=always --style=numbers --theme OneHalfDark {}' --preview-window=down"
+alias fnvim='nvim $(fzf -m --preview="bat --color=always --style=numbers --theme OneHalfDark {}" --preview-window=down)'
+alias fvim='vim $(fzf -m --preview="bat --color=always --style=numbers --theme OneHalfDark {}" --preview-window=down)'
+alias fcd="cd \$(find . -type d | fzf)"
+alias vi='nvim'
+alias vim='nvim'
+alias n='nvim'
+alias diff="delta --side-by-side --diff-so-fancy"
+if command -v batcat &> /dev/null; then
+  alias cat='batcat --theme OneHalfDark -p'
+else
+  alias cat='bat --theme OneHalfDark -p'
+fi
+alias mkdir='mkdir -p'
+alias reload="termux-reload-settings"
+alias psu="ps aux"
+alias psg="ps aux | grep -i" # Usage: psg process_name
+alias kill9="kill -9"
+alias startssh='termux-ssh'
+alias stopssh='termux-ssh stop'
+alias myip="curl ifconfig.me" # Show public IP
+alias largefile="du -h -x -s -- * | sort -r -h | head -20"
+alias listfont="magick convert -list font | grep -iE 'font:.*'"
 
 ## Pacman
-alias \
-search='pacman -Ss' \
-install='sudo pacman -S' \
-upgrade='sudo pacman -Syu' \
-update='sudo pacman -Sy' \
-info='pacman -Qii' \
-app_list='pacman -Ql' \
-autoclean='pacman -Qdtq | sudo pacman -Rc -' \
-mirror='sudo reflector --age 48 --country GB --fastest 5 --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirror'
-
-## Sytemctl
-alias \
-sstatus="sudo systemctl status" \
-srestart="sudo systemctl restart" \
-enabled='sys list-unit-files --state=enabled'
-# sys='sudo systemctl ' \
-
-## Dotfile
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-## Git
-alias \
-glog='git log --pretty=oneline --abbrev-commit' \
-glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all" \
-commit='git commit -S -m' \
-checkout='git checkout' \
-push='git push' \
-pull='git pull' \
-gstatus='git status'
-
+alias search='pacman -Ss'
+alias install='pacman -S'
+alias upgrade='pacman -Syu'
+alias update='pacman -Sy'
+alias info='pacman -Qii'
+alias app_list='pacman -Ql'
+alias autoclean='pacman -Qdtq | pacman -Rc -'
 ## Misc
 alias wget='wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
+
+# Searches for text in all files in the current folder
+ftext() {
+  # -i case-insensitive
+  # -I ignore binary files
+  # -H causes filename to be printed
+  # -r recursive search
+  # -n causes line number to be printed
+  # optional: -F treat search term as a literal, not a regular expression
+  # optional: -l only print filenames and not the matching lines ex. grep -irl "$1" *
+  grep -iIHrn --color=always "$1" . | less -r
+}
+
+# Copy and go to the directory
+cpg() {
+  if [ -d "$2" ]; then
+    cp "$1" "$2" && cd "$2" || return
+  else
+    cp "$1" "$2"
+  fi
+}
+
+# Move and go to the directory
+mvg() {
+  if [ -d "$2" ]; then
+    mv "$1" "$2" && cd "$2" || return
+  else
+    mv "$1" "$2"
+  fi
+}
+
+# Create and go to the directory
+mkdirg() {
+  mkdir -p "$1"
+  cd "$1" || return
+}
+
+# fuzzy find and kill a process
+fkill() {
+  local pid
+
+  # Use a temp file to hold selected lines
+  local tmpfile
+  tmpfile=$(mktemp)
+
+  ps -eo user,pid,cmd --sort=-%mem \
+    | sed 1d \
+    | fzf --multi \
+      --reverse \
+      --header=" Select processes to kill (Tab to mark, Enter to kill)" \
+      --preview 'ps -p {2} -o pid,user,%cpu,%mem,cmd' \
+      --bind 'ctrl-s:toggle-sort' > "$tmpfile"
+
+  if [[ ! -s $tmpfile ]]; then
+    echo "No processes selected." >&2
+    rm -f "$tmpfile"
+    return 1
+  fi
+
+  while IFS= read -r line; do
+    pid=$(echo "$line" | awk '{print $2}')
+    if [[ -n "$pid" ]]; then
+      echo "Killing PID $pid…" >&2
+      if kill -TERM "$pid" 2> /dev/null; then
+        echo "Sent SIGTERM to $pid" >&2
+      else
+        echo "SIGTERM failed for $pid, sending SIGKILL…" >&2
+        kill -KILL "$pid" 2> /dev/null \
+          && echo "Sent SIGKILL to $pid" >&2 \
+          || echo "Failed to kill $pid" >&2
+      fi
+    fi
+  done < "$tmpfile"
+
+  rm -f "$tmpfile"
+}
+
+# Quick backup of a file or directory
+backup() {
+  local item="$1"
+  if [[ -z "$item" ]]; then
+    echo "[x] Usage: backup <file_or_directory>"
+    return 1
+  fi
+
+  local backup_name
+  backup_name="${item}.backup.$(date +%Y%m%d_%H%M%S)"
+  echo "[i] Creating backup: $backup_name"
+
+  if [[ -d "$item" ]]; then
+    cp -rv "$item" "$backup_name"
+  else
+    cp -v "$item" "$backup_name"
+  fi
+
+  echo "[✓] Backup created: $backup_name"
+}
+
+# Find and replace text in files
+freplace() {
+  if [[ $# -ne 3 ]]; then
+    echo "[x] Usage: freplace <search_text> <replace_text> <file_pattern>"
+    echo "    Example: freplace 'old_text' 'new_text' '*.txt'"
+    return 1
+  fi
+
+  local search="$1"
+  local replace="$2"
+  local pattern="$3"
+
+  echo "[i] Searching for '$search' in files matching '$pattern'"
+  echo "[i] Will replace with '$replace'"
+
+  # Show what will be changed first
+  echo "[i] Files that will be modified:"
+  # shellcheck disable=SC2086
+  grep -l "$search" $pattern 2> /dev/null || {
+    echo "[x] No files found containing '$search'"
+    return 1
+  }
+
+  read -p "Continue with replacement? (y/N): " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    # shellcheck disable=SC2086
+    sed -i.bak "s/$search/$replace/g" $pattern
+    echo "[✓] Replacement completed. Original files backed up with .bak extension"
+  else
+    echo "[i] Operation cancelled"
+  fi
+}
+
+# Show disk usage of directories in current path
+duf() {
+  local target="${1:-.}"
+  echo "[i] Disk usage for: $target"
+  du -h "$target"/* 2> /dev/null | sort -hr | head -20
+}
+
+# Quick note taking
+note() {
+  local note_file="$HOME/.notes"
+  if [[ $# -eq 0 ]]; then
+    echo "[i] Current notes:"
+    cat "$note_file" 2> /dev/null || echo "[i] No notes found"
+  else
+    echo "$(date '+%Y-%m-%d %H:%M:%S'): $*" >> "$note_file"
+    echo "[✓] Note added"
+  fi
+}
+
+# Find large files
+findbig() {
+  local size="${1:-100M}"
+  local path="${2:-.}"
+  echo "[i] Finding files larger than $size in $path"
+  find "$path" -type f -size "+$size" -exec sh -c 'ls -lh "$@"' _ {} + 2> /dev/null | sort -k5 -hr
+}
+
+# Calculate file checksums
+checksum() {
+  local file="$1"
+  if [[ -z "$file" ]] || [[ ! -f "$file" ]]; then
+    echo "[x] Usage: checksum <file>"
+    return 1
+  fi
+
+  echo "[i] Checksums for: $file"
+  echo "  MD5:    $(md5sum "$file" | cut -d' ' -f1)"
+  echo "  SHA1:   $(sha1sum "$file" | cut -d' ' -f1)"
+  echo "  SHA256: $(sha256sum "$file" | cut -d' ' -f1)"
+}
+
+cp2clip() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: cp2clip <filename>"
+    return 1
+  fi
+  if [ ! -f "$1" ]; then
+    echo "Error: File '$1' not found"
+    return 1
+  fi
+
+  if command -v termux-clipboard-set > /dev/null; then
+    cat "$1" | termux-clipboard-set
+  elif command -v xclip > /dev/null; then
+    cat "$1" | xclip -selection clipboard
+  elif command -v xsel > /dev/null; then
+    cat "$1" | xsel --clipboard --input
+  else
+    echo "Error: No clipboard utility found."
+    echo "Either install termux-api, with: pkg install termux-api"
+    echo "Or install either xclip or xsel (require you to start a x11 session)"
+    return 1
+  fi
+
+  echo "Content of '$1' copied to clipboard"
+}
