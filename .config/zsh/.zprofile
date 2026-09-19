@@ -1,13 +1,4 @@
-#!/usr/bin/env zsh
-#              ____      __    __          __  __  _
-#   ____ ___  / __/___ _/ /_  / /_  ____ _/ /_/ /_(_)
-#  / __ `__ \/ /_/ __ `/ __ \/ __ \/ __ `/ __/ __/ /
-# / / / / / / __/ /_/ / /_/ / / / / /_/ / /_/ /_/ /
-#/_/ /_/ /_/_/  \__, /_.___/_/ /_/\__,_/\__/\__/_/
-#              /____/
-#
-#   https://github.com/mfgbhatti/dotfile
-
+#!/data/data/com.termux/files/usr/binn/env zsh
 # Default
 EDITOR="/data/data/com.termux/files/usr/bin/nvim"
 
@@ -26,11 +17,15 @@ export LESSHISTFILE="-"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export GOPATH="$XDG_DATA_HOME/go"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+# Npm config
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+# Add npm bin to path
+export PATH="$HOME/.local/share/npm/bin:$PATH"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # Python
 export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 export PYTHONUSERBASE="$XDG_DATA_HOME/python"
-
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
