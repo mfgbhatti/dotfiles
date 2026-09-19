@@ -1,24 +1,20 @@
-#              ____      __    __          __  __  _
-#   ____ ___  / __/___ _/ /_  / /_  ____ _/ /_/ /_(_)
-#  / __ `__ \/ /_/ __ `/ __ \/ __ \/ __ `/ __/ __/ /
-# / / / / / / __/ /_/ / /_/ / / / / /_/ / /_/ /_/ /
-#/_/ /_/ /_/_/  \__, /_.___/_/ /_/\__,_/\__/\__/_/
-#              /____/
-#
-#	https://github.com/mfgbhatti/dotfile
-
+#!/data/data/com.twrmux/files/usr/bin/env zsh
 # Source aliases and setopts
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
+
+# setopts for zsh
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/setopt" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/setopt"
 
-
 ## Load zsh plugins
+source "$XDG_CONFIG_HOME"/zsh/plugins/zsh-you-should-use/zsh-you-should-use.plugin.zsh 2>/dev/null
+
 source "$XDG_CONFIG_HOME"/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source "$XDG_CONFIG_HOME"/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source "$XDG_CONFIG_HOME"/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh 2>/dev/null
 
 ## starship
 eval "$(starship init zsh)"
+
 # enable fzf
 source <(fzf --zsh)
 

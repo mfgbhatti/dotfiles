@@ -1,10 +1,23 @@
-###################################################################
 # this shell configuration is inspired
 # from
 # https://github.com/mayTermux/myTermux/blob/main/.aliases
 # and
 # https://github.com/ChrisTitusTech/mybash/blob/main/.bashrc
-####################################################################
+#
+alias pd="proot-distro"
+## Pacman
+alias search='pacman -Ss'
+alias install='pacman -S'
+alias upgrade='pacman -Syu'
+alias list-upgrade='pacman -Qu'
+alias update='pacman -Sy'
+alias info='pacman -Qii'
+alias app_list='pacman -Ql'
+alias autoclean='pacman -Qdtq | pacman -Rc -'
+## Misc
+alias wget='wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
+
+# -----------------
 alias q="exit"
 alias c="clear"
 alias g="git"
@@ -16,7 +29,6 @@ alias '.....'='cd ../../../..'
 alias ls='ls -lahN --color=auto --group-directories-first'
 alias preview="fzf --preview='bat --color=always --style=numbers --theme OneHalfDark {}' --preview-window=down"
 alias fnvim='nvim $(fzf -m --preview="bat --color=always --style=numbers --theme OneHalfDark {}" --preview-window=down)'
-alias fvim='vim $(fzf -m --preview="bat --color=always --style=numbers --theme OneHalfDark {}" --preview-window=down)'
 alias fcd="cd \$(find . -type d | fzf)"
 alias vi='nvim'
 alias vim='nvim'
@@ -37,17 +49,6 @@ alias stopssh='termux-ssh stop'
 alias myip="curl ifconfig.me" # Show public IP
 alias largefile="du -h -x -s -- * | sort -r -h | head -20"
 alias listfont="magick convert -list font | grep -iE 'font:.*'"
-
-## Pacman
-alias search='pacman -Ss'
-alias install='pacman -S'
-alias upgrade='pacman -Syu'
-alias update='pacman -Sy'
-alias info='pacman -Qii'
-alias app_list='pacman -Ql'
-alias autoclean='pacman -Qdtq | pacman -Rc -'
-## Misc
-alias wget='wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
 
 # Searches for text in all files in the current folder
 ftext() {
@@ -222,21 +223,35 @@ checksum() {
 }
 
 cp2clip() {
-  if [ $# -eq 0 ]; then
-    echo "Usage: cp2clip <filename>"
-    return 1
-  fi
-  if [ ! -f "$1" ]; then
-    echo "Error: File '$1' not found"
-    return 1
-  fi
+  # if [ $# -eq 0 ]; then
+  #   echo "Usage: cp2clip <filename>"
+  #   return 1
+  # fi
+  # if [ ! -f "$1" ]; then
+  #   echo "Error: File '$1' not found"
+  #   return 1
+  # fi
+  #
+  # if command -v termux-clipboard-set > /dev/null; then
+  #   cat "$1" | termux-clipboard-set
+  # elif command -v xclip > /dev/null; then
+  #   cat "$1" | xclip -selection clipboard
+  # elif command -v xsel > /dev/null; then
+  #   cat "$1" | xsel --clipboard --input
+  # else
+  #   echo "Error: No clipboard utility found."
+  #   echo "Either install termux-api, with: pkg install termux-api"
+  #   echo "Or install either xclip or xsel (require you to start a x11 session)"
+  #   return 1
+  # fi
+local clip_cmd
 
   if command -v termux-clipboard-set > /dev/null; then
-    cat "$1" | termux-clipboard-set
+    clip_cmd="termux-clipboard-set"
   elif command -v xclip > /dev/null; then
-    cat "$1" | xclip -selection clipboard
+    clip_cmd="xclip -selection clipboard"
   elif command -v xsel > /dev/null; then
-    cat "$1" | xsel --clipboard --input
+    clip_cmd="xsel --clipboard --input"
   else
     echo "Error: No clipboard utility found."
     echo "Either install termux-api, with: pkg install termux-api"
@@ -244,5 +259,60 @@ cp2clip() {
     return 1
   fi
 
-  echo "Content of '$1' copied to clipboard"
+  if [ $# -eq 0 ]; then
+    if [ -t 0 ]; then
+      echo "Usage: cp2clip <filename>  OR  command | cp2clip"
+      return 1
+    fi
+    ${=clip_cmd}
+    return
+  fi
+
+  if [ ! -f "$1" ]; then
+    echo "Error: File '$1' not found"
+    return 1
+  fi
+
+  ${=clip_cmd} < "$1"
+
+echo "[✓] Content of '$1' copied to clipboard"
+}
+
+tb() {
+    # Check dependency
+    if ! command -v nc >/dev/null 2>&1; then
+        echo "tb: 'nc' (netcat) is required." >&2
+        echo "Install it with your package manager, e.g.:" >&2
+        echo "  Arch:   sudo pacman -S openbsd-netcat" >&2
+        echo "  Debian: sudo apt install netcat-openbsd" >&2
+        echo "  Termux: pkg install netcat-openbsd" >&2
+        return 127
+    fi
+
+    # Check arguments
+    if [[ $# -gt 1 ]]; then
+        echo "Usage: tb [file]" >&2
+        return 2
+    fi
+
+    # Upload file
+    if [[ $# -eq 1 ]]; then
+        if [[ ! -f "$1" ]]; then
+            echo "tb: file not found: $1" >&2
+            return 1
+        fi
+
+        nc termbin.com 9999 < "$1"
+        return $?
+    fi
+
+    # Upload stdin
+    if [[ -t 0 ]]; then
+        echo "tb: no input provided." >&2
+        echo "Usage: tb [file]" >&2
+        echo "   or: command | tb" >&2
+        return 2
+    fi
+
+    nc termbin.com 9999
 }
