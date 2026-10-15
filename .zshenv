@@ -1,13 +1,12 @@
-#              ____      __    __          __  __  _
-#   ____ ___  / __/___ _/ /_  / /_  ____ _/ /_/ /_(_)
-#  / __ `__ \/ /_/ __ `/ __ \/ __ \/ __ `/ __/ __/ /
-# / / / / / / __/ /_/ / /_/ / / / / /_/ / /_/ /_/ /
-#/_/ /_/ /_/_/  \__, /_.___/_/ /_/\__,_/\__/\__/_/
-#              /____/
+# Hastre ~/.zshenv (copy of templates/zshenv, installed by tools/hastre-setup).
 #
-#	https://github.com/mfgbhatti/dotfile
+# zsh reads this file for EVERY invocation (login, interactive, scripts), so it
+# is variables only: no PATH changes, no commands, no aliases. Those belong in
+# config/environments.zsh. Existing values are respected (":-").
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
-# ./.config/pfetch/pfetch
-fastfetch
-ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}"/zsh
-#systemd-analyze | tr '+' '\n' | sed -E 's/(.*\(userspace\) )/\1\nTotal Time /;s/(.*in)/\1\n-/;s/([0-9.sm]* )\(([a-z]*)\)/\2 in \1/;s/^[[:space:]]/- /g;s/^gra.*$//'
+# Point zsh at the Hastre checkout (.zshrc, .zprofile, ... are read from here).
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
