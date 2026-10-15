@@ -1,15 +1,12 @@
 [user]
-	name = Farhan Ghani
+	name = farhan ghani
 	email = 13787498+mfgbhatti@users.noreply.github.com
-	signingkey = 9DD189D2BE310AB2
 [commit]
 	gpgsign = true
+[push]
+	autoSetupRemote = true
 [gpg]
-	program = gpg
-[core]
-	autocrlf = false
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+	format = ssh
+[init]
+	defaultBranch = main
+
